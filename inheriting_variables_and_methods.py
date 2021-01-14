@@ -47,3 +47,13 @@ class Pet():
 
   def reduce_boredom(self):
     self.boredom = max(0, self.boredom - self.reduce_boredom)
+
+
+# Create a Cat class, which will be a class of the Pet Superclass
+class Cat(Pet):  #the class name that the new class inherits from goes in ()
+  sounds = ['Meow']
+
+  def chasing_rats(self):
+    return 'Chase rat'
+
+    
