@@ -25,3 +25,25 @@ class Pet():
     else:
       return 'Bored'
 
+  def __str__(self):
+    state = "     I'm " + self.name + "."
+    state += " I feel " + self.mood() + "."
+    # state += "Hunger %d Boredom %d Words %s" % (self.hunger, self.boredom, self.sounds)
+    return state
+
+  def hi(self):
+    print(self.sounds[randrange(len(self.sounds))])
+    self.reduce_boredom()
+
+  def teach(self, word):
+    self.sounds_append(word)
+    self.reduce_boredom()
+
+  def feed(self):
+    self.reduce_hunger()
+
+  def reduce_hunger(self):
+    self.hunger = max(0, self.hunger - self.hunger_decrement)
+
+  def reduce_boredom(self):
+    self.boredom = max(0, self.boredom - self.reduce_boredom)
