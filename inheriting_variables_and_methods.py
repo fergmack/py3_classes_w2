@@ -103,3 +103,12 @@ p1 = Pet("Teddy")
 p1.hi() # just the regular Pet hello
 #p1.chasing_rats() # This will give you an error -- this method doesn't exist on instances of the Pet class.
 #p1.smile() # This will give you an error, too. This method does not exist on instances of the Pet class.
+
+#Q  What would print after running the following code:
+new_cat = Cheshire("Pumpkin”)
+class Siamese(Cat):
+  def song(self):
+    print("We are Siamese")
+another_cat = Siamese("Lady")
+new_cat.song()
+
