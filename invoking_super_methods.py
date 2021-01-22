@@ -53,7 +53,7 @@ class Dog(Pet):
   sounds = ['Woof', 'Ruff']
 
   def feed(self):
-    Pet.feed(self)
+    # Pet.feed(self)
     print('Arf! Thanks')
 
 d1 = Dog('Astro')
@@ -76,3 +76,9 @@ class Bird(Pet):
 b1 = Bird('Tweety', 5)
 b1.teach('Polly wanna cracker')
 b1.hi()
+
+# Q1
+print(b1.sounds)
+
+# Q2 
+d1.feed()
