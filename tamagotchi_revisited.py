@@ -78,7 +78,7 @@ class Dog(Pet):
   sounds = ['Woof', 'Ruff']
 
   def mood(self):
-    if (self.hungry > self.hunger_threshold and self.bored > self.boredom_threshold):
+    if (self.hunger > self.hunger_threshold and self.bored > self.boredom_threshold):
       return 'Bored and hungry...'
     else:
       return 'Happy!'
@@ -125,7 +125,7 @@ def whichone(petlist, name):
       return pet 
   return None # no pet matched, ie the pet is not in petlist 
 
-# A list of pet's you can adopt 
+# A list of pet's you can adopt, so it's 'name': Class
 pet_types = {'dog': Dog, 'lab': Lab, 'poodle': Poodle, 'cat': Cat, 'bird': Bird}
 
 # select pet - enter 'name' and Class
@@ -158,11 +158,61 @@ def play():
     if command == "Quit":
       print("Exiting...")
       return
+
+   
+    # Commands Left off fix this
     elif command == "Adopt" and len(words) > 1:
-      # look into how whichone() operates here left off 
-      # whichone() makes sure you haven't chosen the same pet again
+      # look into how whichone() operates here 
+      # whichone() makes sure you haven't chosen the same pet again - it returns none if you haven't already got a pet with that name
       if whichone(animals, words[1]):
-        return 'left off'
-      
+        feedback += "You already have a pet with that name"
+      else: # figure out which class it should be
+        if len(words) > 2:
+          # Get class
+          # note words[2] is always the petname for 'Adopt' commnd. Finds the class in pet_types - e.g. 'dog' uses Dog class 
+          Cl = whichtype( words[2] )
+        else:
+          Cl = Pet
+      # Make an instance of that class and append it to the animals list defined at the start
+      # Note: words[1] is the pet name ...e.g. Adopt <petname> dog
+      # ************* This will add ?????? what does Cl ([words[1]] )
+      animals.append( Cl ( [words[1]] ) ) 
+
+    elif command == "Greet" and len(words) > 1:
+      # Note how it differs to how whichoneis() used above. Used to check that you don't already have the pet above, but used to get the pet name below
+      # e.g. words woud be Greet, dog
+      pet = whichone(animals, words[1])
+      if not pet: 
+        feedback += " I didn't recognise that pet name. Please try again."  
+        print()
+      else:
+        print.hi() 
+
+    elif command == "Teach" and len(words) > 2:
+      pet = whichone(animals, words[1])
+      if not pet:
+        feedback += " I didn't recognise that pet name. Please try again."
+      else:
+        # the words the user passed when typeing 'Teach dog hello'
+        pet.teach(words[2])
+    
+    elif command == "Feed" and len(words) > 1:
+      pet = whichone(animals, words[1])
+      if not pet:
+        feedback += " I didn't recognise that pet name. Please try again."
+      else:
+        pet.feed()
+
+    else:
+      feedback += "I didn't understand that. Please try again."
+
+    # add clock to progress boredom 
+    for pet in animals:
+      pet.clock_tick()
+      feedback += "\n" + pet.__str__()
+
+play()
+
+
 
     
