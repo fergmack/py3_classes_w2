@@ -176,7 +176,9 @@ def play():
       # Make an instance of that class and append it to the animals list defined at the start
       # Note: words[1] is the pet name ...e.g. Adopt <petname> dog
       # ************* This will add ?????? what does Cl ([words[1]] )
-      animals.append( Cl ( [words[1]] ) ) 
+      animals.append( Cl (words[1] ) ) 
+
+    Left off fix Greet 
 
     elif command == "Greet" and len(words) > 1:
       # Note how it differs to how whichoneis() used above. Used to check that you don't already have the pet above, but used to get the pet name below
