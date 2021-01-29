@@ -213,7 +213,8 @@ def play():
       pet.clock_tick()
       feedback += "\n" + pet.__str__()
 
-play()
+play() 
+# -- to d0
 
 
 
