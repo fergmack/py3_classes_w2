@@ -16,7 +16,7 @@ class Pet():
   def clock_tick(self):
     self.boredom += 1
     self.boredom += 1
-
+c
   def mood(self):
     if self.hunger <= self.hunger_threshold and self.boredom <= self.boredom_threshold:
       return 'Happy'
